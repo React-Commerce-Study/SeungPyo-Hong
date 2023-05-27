@@ -10,14 +10,13 @@ export default function Header() {
   const HeaderStyle = styled.header`
     display: flex;
     justify-content: center;
-    max-width: 1280px;
+    width: 1280px;
     margin: 0 auto;
-    padding: 0 22px;
 
     .wrapper {
       display: flex;
       justify-content: space-between;
-      width: 100%;
+      min-width: 1024px;
       height: 90px;
 
       .header-left,
