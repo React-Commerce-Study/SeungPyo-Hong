@@ -20,32 +20,37 @@ export default function Main() {
   const MainStyle = styled.main`
     display: flex;
     justify-content: center;
-    width: 1280px;
+    max-width: 1280px;
     margin: 0 auto;
     margin-top: 80px;
 
     .wrapper {
       display: flex;
       justify-content: space-between;
-      min-width: 1024px;
+      width: 100%;
     }
   `;
 
   const UnorderdList = styled.ul`
     display: grid;
-    grid-template-columns: repeat(3, 380px);
-    gap: 70px 78px;
+    width: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    justify-items: center;
+    gap: 78px 70px;
 
     .product-card {
       position: relative;
-
+      width: 380px;
       cursor: pointer;
     }
 
     .product-image {
       display: inline-block;
-      width: 380px;
-      height: 380px;
+      width: 100%;
+      aspect-ratio: 380/380;
+      object-fit: fill;
+      vertical-align: top;
+      box-sizing: border-box;
       border: 1px solid #c4c4c4;
       border-radius: 10px;
       margin-bottom: 20px;

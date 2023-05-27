@@ -6,10 +6,6 @@ import youtubeIcon from '../../assets/images/icon-yt.svg';
 
 export default function Footer() {
   const FooterStyle = styled.footer`
-    display: flex;
-    justify-content: center;
-    max-width: 100vw;
-    margin: 0 auto;
     margin-top: 230px;
     background-color: #f2f2f2;
 
@@ -18,6 +14,7 @@ export default function Footer() {
       flex-direction: column;
       max-width: 1280px;
       box-sizing: border-box;
+      margin: 0 auto;
       height: 300px;
       padding: 60px 20px 0 20px;
       font-size: 14px;
@@ -53,7 +50,7 @@ export default function Footer() {
 
     .footer-horizon-line {
       display: block;
-      width: 1280px;
+      width: 100%;
       height: 1px;
       background-color: #c4c4c4;
       margin-top: 22px;
