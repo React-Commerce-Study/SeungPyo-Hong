@@ -1,0 +1,7 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="50" cy="50" r="50" transform="rotate(-180 50 50)" fill="#D9D9D9" fill-opacity="0.5"/>
+<mask id="path-2-inside-1_685_7" fill="white">
+<path d="M66 50.252L41.2513 75.0007L16.5025 50.2519L41.2513 25.5032L66 50.252Z"/>
+</mask>
+<path d="M66 50.252L69.5355 53.7875L73.0711 50.252L69.5355 46.7164L66 50.252ZM62.4645 46.7164L37.7157 71.4652L44.7868 78.5362L69.5355 53.7875L62.4645 46.7164ZM37.7157 29.0387L62.4645 53.7875L69.5355 46.7164L44.7868 21.9677L37.7157 29.0387Z" fill="black" mask="url(#path-2-inside-1_685_7)"/>
+</svg>
