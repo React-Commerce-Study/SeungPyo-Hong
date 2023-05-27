@@ -4,6 +4,7 @@ import Header from './components/header/Header';
 import Slider from './components/slider/Slider';
 import Main from './components/main/Main';
 import Footer from './components/footer/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -20,7 +21,7 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-function App() {
+function Index() {
   return (
     <>
       <GlobalStyle />
@@ -29,6 +30,16 @@ function App() {
       <Main />
       <Footer />
     </>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Index />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 export default App;
