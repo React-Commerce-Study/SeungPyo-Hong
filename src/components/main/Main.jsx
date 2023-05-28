@@ -8,18 +8,9 @@ export default function Main() {
   const [products, setProducts] = useState([]);
 
   async function getProducts() {
-    try {
-      const response = await fetch('https://openmarket.weniv.co.kr/products');
-
-      if (!response.ok) {
-        throw new Error('상품 데이터를 불러오는 데 실패했습니다.');
-      }
-
-      const data = await response.json();
-      setProducts(data.results);
-    } catch (error) {
-      console.error('상품 데이터를 불러오는 데 실패했습니다:', error.message);
-    }
+    const response = await fetch('https://openmarket.weniv.co.kr/products');
+    const data = await response.json();
+    setProducts(data.results);
   }
 
   useEffect(() => {
