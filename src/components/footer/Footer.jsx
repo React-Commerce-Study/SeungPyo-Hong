@@ -5,69 +5,6 @@ import fbIcon from '../../assets/images/icon-fb.svg';
 import youtubeIcon from '../../assets/images/icon-yt.svg';
 
 export default function Footer() {
-  const FooterStyle = styled.footer`
-    margin-top: 230px;
-    background-color: #f2f2f2;
-
-    .wrapper {
-      display: flex;
-      flex-direction: column;
-      max-width: 1280px;
-      box-sizing: border-box;
-      margin: 0 auto;
-      height: 300px;
-      padding: 60px 20px 0 20px;
-      font-size: 14px;
-    }
-
-    .footer-nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-nav-site {
-      a {
-        text-decoration: none;
-      }
-
-      a:visited {
-        color: black;
-      }
-
-      a strong {
-        font-weight: bold;
-      }
-      span {
-        margin: 0 14px;
-      }
-    }
-
-    .footer-nav-sns {
-      display: flex;
-      gap: 14px;
-    }
-
-    .footer-horizon-line {
-      display: block;
-      width: 100%;
-      height: 1px;
-      background-color: #c4c4c4;
-      margin-top: 22px;
-      margin-bottom: 30px;
-    }
-
-    .footer-company-desc {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      color: #767676;
-
-      span strong {
-        font-weight: bold;
-      }
-    }
-  `;
   return (
     <FooterStyle>
       <section className='wrapper'>
@@ -112,3 +49,67 @@ export default function Footer() {
     </FooterStyle>
   );
 }
+
+const FooterStyle = styled.footer`
+  margin-top: 230px;
+  background-color: #f2f2f2;
+
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: 1280px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    height: 300px;
+    padding: 60px 20px 0 20px;
+    font-size: 14px;
+  }
+
+  .footer-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-nav-site {
+    a {
+      text-decoration: none;
+    }
+
+    a:visited {
+      color: black;
+    }
+
+    a strong {
+      font-weight: bold;
+    }
+    span {
+      margin: 0 14px;
+    }
+  }
+
+  .footer-nav-sns {
+    display: flex;
+    gap: 14px;
+  }
+
+  .footer-horizon-line {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: #c4c4c4;
+    margin-top: 22px;
+    margin-bottom: 30px;
+  }
+
+  .footer-company-desc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    color: #767676;
+
+    span strong {
+      font-weight: bold;
+    }
+  }
+`;

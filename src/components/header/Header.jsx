@@ -7,75 +7,7 @@ import userImg from '../../assets/images/icon-user.svg';
 import styled from 'styled-components';
 
 export default function Header() {
-  const HeaderStyle = styled.header`
-    display: flex;
-    justify-content: center;
-    max-width: 1280px;
-    margin: 0 auto;
-    padding: 0 22px;
-
-    .wrapper {
-      display: flex;
-      justify-content: space-between;
-      width: 100%;
-      height: 90px;
-
-      .header-left,
-      .header-right {
-        display: flex;
-        gap: 30px;
-        align-items: center;
-      }
-
-      .header-search-form {
-        display: flex;
-        position: relative;
-        justify-content: space-between;
-        align-items: center;
-        width: 400px;
-        height: 46px;
-        padding: 0 22px;
-        background: #ffffff;
-        border: 2px solid #c4c4c4;
-        border-radius: 50px;
-        transition: 0.3s all;
-
-        input {
-          width: 100%;
-          height: 70%;
-          font-size: 16px;
-          border: none;
-
-          &:focus {
-            outline: none;
-          }
-        }
-
-        button {
-          background-color: transparent;
-          border: none;
-          cursor: pointer;
-
-          img {
-            pointer-events: none;
-          }
-        }
-      }
-
-      .header-user-menu {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-decoration: none;
-
-        span {
-          font-size: 12px;
-          color: #767676;
-        }
-      }
-    }
-  `;
-
+  //React 스럽게 코드 수정하기
   function changeFormBorderColor() {
     const $form = document.querySelector('.header-search-form');
     $form.style.borderColor = '#21bf48';
@@ -122,3 +54,72 @@ export default function Header() {
     </HeaderStyle>
   );
 }
+
+const HeaderStyle = styled.header`
+  display: flex;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 22px;
+
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 90px;
+
+    .header-left,
+    .header-right {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .header-search-form {
+      display: flex;
+      position: relative;
+      justify-content: space-between;
+      align-items: center;
+      width: 400px;
+      height: 46px;
+      padding: 0 22px;
+      background: #ffffff;
+      border: 2px solid #c4c4c4;
+      border-radius: 50px;
+      transition: 0.3s all;
+
+      input {
+        width: 100%;
+        height: 70%;
+        font-size: 16px;
+        border: none;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+
+        img {
+          pointer-events: none;
+        }
+      }
+    }
+
+    .header-user-menu {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-decoration: none;
+
+      span {
+        font-size: 12px;
+        color: #767676;
+      }
+    }
+  }
+`;
