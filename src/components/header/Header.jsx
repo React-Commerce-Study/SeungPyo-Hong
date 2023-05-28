@@ -32,8 +32,8 @@ export default function Header() {
             <input
               type='text'
               placeholder='상품을 검색해보세요!'
-              onFocus={changeFormBorderColor}
-              onBlur={changeFormBorderColorToOrigin}
+              onFocus={() => changeFormBorderColor()}
+              onBlur={() => changeFormBorderColorToOrigin()}
             />
             <button type='button'>
               <img className='search-tool' src={searchBlur} alt='검색돋보기' />
