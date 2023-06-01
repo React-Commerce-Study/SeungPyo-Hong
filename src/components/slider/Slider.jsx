@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import leftBtn from '../../assets/images/icon-swiper-1.svg';
 import rightBtn from '../../assets/images/icon-swiper-2.svg';
 import styled from 'styled-components';
@@ -9,9 +9,23 @@ import sliderBg4 from '../../assets/images/slider-bg-4.jpg';
 import sliderBg5 from '../../assets/images/slider-bg-5.jpg';
 
 export default function Slider() {
+  const slides = [sliderBg1, sliderBg2, sliderBg3, sliderBg4, sliderBg5];
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleSlide = (index) => {
+    setActiveIndex(index);
+  };
   return (
     <Section>
-      <img className='slider-image' src='#' alt='슬라이더이미지' />
+      {slides.map((slide, index) => (
+        <div
+          key={index * 10}
+          className={`slide ${index === activeIndex ? 'active' : ''}`}
+          activeindex={`-${activeIndex * 100}%`}
+        >
+          <img src={slide} alt={`${index}번 슬라이드`} />
+        </div>
+      ))}
       <button className='swiper-left'>
         <img src={leftBtn} alt='왼쪽으로넘기기' />
       </button>
@@ -19,27 +33,39 @@ export default function Slider() {
         <img src={rightBtn} alt='오른쪽으로넘기기' />
       </button>
       <div className='slider-indicator'>
-        {/* span의 개수를 동적으로 조절할 수 있게 코드 리팩토링하기 */}
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
+        {slides.map((slide, index) => {
+          return (
+            <button
+              key={index}
+              className={`indicator ${index === activeIndex ? 'active' : ''}`}
+              onClick={() => handleSlide(index)}
+            ></button>
+          );
+        })}
       </div>
     </Section>
   );
 }
 
 const Section = styled.section`
+  display: flex;
+
   max-width: 100vw;
   height: 500px;
   position: relative;
   background-color: #c4c4c4;
+  overflow: hidden;
 
-  .slider-image {
-    display: block;
+  .slide {
     width: 100%;
-    height: 100%;
+    transform: translateX(${(props) => props.children[0][0].props.activeindex});
+    flex-shrink: 0;
+    transition: all 0.3s ease-in-out;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
   .swiper-left,
@@ -68,15 +94,18 @@ const Section = styled.section`
     transform: translateX(-50%);
     gap: 3px;
 
-    span {
+    button {
       display: block;
       width: 10px;
       height: 10px;
       border-radius: 50%;
-      background-color: black;
+      border: none;
+      background-color: #5bbc58;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: pointer;
 
-      //나중에 swiper 버튼 클릭에 따라서 숫자 부분 상태만 바꿔주기
-      &:not(:nth-child(1)) {
+      &:not(.active) {
         background-color: white;
       }
     }
