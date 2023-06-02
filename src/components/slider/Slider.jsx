@@ -95,6 +95,13 @@ const Section = styled.section`
       object-fit: cover;
     }
   }
+  .swiper-btn {
+    &:hover {
+      background-color: #a4a4a4;
+      opacity: 0.8;
+      transition: all 0.3s;
+    }
+  }
 
   .swiper-left,
   .swiper-right {
