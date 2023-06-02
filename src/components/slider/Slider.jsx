@@ -15,6 +15,23 @@ export default function Slider() {
   const handleSlide = (index) => {
     setActiveIndex(index);
   };
+
+  const sliderChange = (direction) => {
+    if (direction === 'left') {
+      if (activeIndex === 0) {
+        setActiveIndex(slides.length - 1);
+      } else {
+        setActiveIndex((prev) => (prev -= 1));
+      }
+    } else {
+      if (activeIndex === slides.length - 1) {
+        setActiveIndex(0);
+      } else {
+        setActiveIndex((prev) => (prev += 1));
+      }
+    }
+  };
+
   return (
     <Section>
       {slides.map((slide, index) => (
@@ -26,11 +43,22 @@ export default function Slider() {
           <img src={slide} alt={`${index}번 슬라이드`} />
         </div>
       ))}
-      <button className='swiper-left'>
+      <button
+        className='swiper-btn swiper-left'
+        onClick={() => {
+          sliderChange('left');
+        }}
+      >
         <img src={leftBtn} alt='왼쪽으로넘기기' />
       </button>
-      <button className='swiper-right'>
-        <img src={rightBtn} alt='오른쪽으로넘기기' />
+      <button className='swiper-btn swiper-right'>
+        <img
+          src={rightBtn}
+          alt='오른쪽으로넘기기'
+          onClick={() => {
+            sliderChange('right');
+          }}
+        />
       </button>
       <div className='slider-indicator'>
         {slides.map((slide, index) => {
