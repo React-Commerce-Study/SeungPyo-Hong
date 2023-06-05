@@ -3,9 +3,11 @@ import styled from 'styled-components';
 import shoppingCart from '../../assets/images/shopping-cart-button.svg';
 import pageSwipeBtnLeft from '../../assets/images/page-swiper-left.svg';
 import pageSwipeBtnRight from '../../assets/images/page-swiper-right.svg';
+import { useNavigate } from 'react-router-dom';
 
 export default function Main() {
   const [products, setProducts] = useState([]);
+  const navigate = useNavigate();
 
   async function getProducts() {
     try {
@@ -22,6 +24,10 @@ export default function Main() {
     }
   }
 
+  const linkToDetail = (el, event) => {
+    navigate(`/products/${el}`);
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -29,6 +35,8 @@ export default function Main() {
   return (
     <MainStyle>
       <section className='wrapper'>
+        {/* {!detailPage && ( */}
+        {/* <> */}
         <UnorderdList>
           {/* <div className='page-swipe-buttons'>
             <button className='page-swipe-button-left'>
@@ -40,7 +48,11 @@ export default function Main() {
           </div> */}
           {products.map((el) => {
             return (
-              <li className='product-card' key={el.product_id}>
+              <li
+                className='product-card'
+                key={el.product_id}
+                onClick={(event) => linkToDetail(el.product_id, event)}
+              >
                 <img
                   className='product-image'
                   src={el.image}
@@ -73,6 +85,9 @@ export default function Main() {
             <img src={pageSwipeBtnRight} alt='상품페이지오른쪽으로넘기기' />
           </button>
         </Pagination>
+        {/* </> */}
+        {/* )} */}
+        {/* {detailPage && <ProductDetail productData={productData} />} */}
       </section>
     </MainStyle>
   );
