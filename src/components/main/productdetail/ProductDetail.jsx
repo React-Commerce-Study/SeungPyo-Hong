@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 export default function ProductDetail({ productData }) {
   const [productNum, setProductNum] = useState(1);
@@ -40,7 +41,6 @@ export default function ProductDetail({ productData }) {
       const data = await response.json();
       console.log(data);
       setProductDetail(data);
-      // console.log(productDetail);
     } catch (error) {
       console.error('상품 데이터를 불러오는 데 실패했습니다:', error.message);
     }
@@ -51,65 +51,131 @@ export default function ProductDetail({ productData }) {
     loadProductDetail();
   }, []);
 
+  const Section = styled.section`
+    display: flex;
+    justify-content: center;
+    max-width: 1280px;
+    margin: 0 auto;
+    /* margin-top: 80px; */
+
+    .wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+
+    .detail-header {
+      display: flex;
+    }
+
+    .product-image-container {
+      max-width: 600px;
+      width: 100%;
+      aspect-ratio: 1/1;
+
+      img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
+    }
+
+    .buying-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .product-summary {
+        span {
+          display: block;
+        }
+      }
+
+      .product-quantity-btns {
+        display: flex;
+
+        input {
+          width: 50px;
+          height: 50px;
+          padding: 0;
+          margin: 0;
+          box-sizing: border-box;
+        }
+        input[type='number']::-webkit-outer-spin-button,
+        input[type='number']::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+  `;
   return (
-    <>
-      <div>
-        <img src={productDetail.image} alt='상품이미지' />
-        <div>
-          <div>
-            <span>{productDetail.store_name}</span>
-            <span>{productDetail.product_name}</span>
-            <span>{productDetail.price?.toLocaleString()}</span>
+    <Section>
+      <div className='wrapper'>
+        <article className='detail-header'>
+          <div className='product-image-container'>
+            <img src={productDetail.image} alt='상품이미지' />
           </div>
-          <div>
-            <span>택배배송 / 무료배송</span>
-            <div>
-              <button
-                onClick={() => {
-                  productNumHandler('reduce');
-                }}
-              >
-                -
-              </button>
-              <input
-                type='number'
-                value={productNum || ''}
-                onChange={directInputProductNumHandler}
-              />
-              {/*
+          <div className='buying-info'>
+            <div className='product-summary'>
+              <span>스토어 네임{productDetail.store_name}</span>
+              <span>프로덕트 네임{productDetail.product_name}</span>
+              <span>가격{productDetail.price?.toLocaleString()}</span>
+            </div>
+            <div className='product-buying'>
+              <span>택배배송 / 무료배송</span>
+              <div className='product-quantity-btns'>
+                <button
+                  onClick={() => {
+                    productNumHandler('reduce');
+                  }}
+                >
+                  -
+                </button>
+                <input
+                  type='number'
+                  value={productNum || ''}
+                  onChange={directInputProductNumHandler}
+                />
+                {/*
                 input[type="number"]::-webkit-outer-spin-button,
                 input[type="number"]::-webkit-inner-spin-button {
                 -webkit-appearance: none;
                 margin: 0;
               } */}
-              <button
-                onClick={() => {
-                  productNumHandler('add');
-                }}
-              >
-                +
-              </button>
-            </div>
-            <div>
-              <span>총 상품 금액</span>
-              <span>총 수량 {productNum}개</span>
-              <span>
-                {(productDetail.price * productNum).toLocaleString()}원
-              </span>
-            </div>
-            <div>
-              <button>바로 구매</button>
-              <button>장바구니</button>
+                <button
+                  onClick={() => {
+                    productNumHandler('add');
+                  }}
+                >
+                  +
+                </button>
+              </div>
+              <div className='product-price'>
+                <span>총 상품 금액</span>
+                <div>
+                  <span>총 수량 {productNum}개</span>
+                  <span>|</span>
+                  <span>
+                    {(productDetail.price * productNum).toLocaleString()}원
+                  </span>
+                </div>
+              </div>
+              <div className='product-buying-buttons'>
+                <button>바로 구매</button>
+                <button>장바구니</button>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
+        <article className='detail-desc'>
+          <button>버튼</button>
+          <button>리뷰</button>
+          <button>Q&A</button>
+          <button>반품/교환정보</button>
+        </article>
       </div>
-      <div>
-        <button>버튼</button>
-        <button>리뷰</button>
-        <button>Q&A</button>
-        <button>반품/교환정보</button>
-      </div>
-    </>
+    </Section>
   );
 }
