@@ -5,8 +5,11 @@ import searchBlur from '../../assets/images/search-blur.svg';
 import cartImg from '../../assets/images/icon-shopping-cart.svg';
 import userImg from '../../assets/images/icon-user.svg';
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 
 export default function Header() {
+  const navigate = useNavigate();
+
   //React 스럽게 코드 수정하기
   function changeFormBorderColor() {
     const $form = document.querySelector('.header-search-form');
@@ -22,12 +25,16 @@ export default function Header() {
     $searchTool.setAttribute('src', searchBlur);
   }
 
+  const goToHome = () => {
+    navigate('/');
+  };
+
   return (
     <HeaderStyle>
       <section className='wrapper'>
         <h1 className='a11y-hidden'>호두마켓헤더</h1>
         <div className='header-left'>
-          <img src={hoduLogo} alt='호두로고' />
+          <img src={hoduLogo} alt='호두로고' onClick={goToHome} />
           <form className='header-search-form'>
             <input
               type='text'
@@ -67,6 +74,12 @@ const HeaderStyle = styled.header`
     justify-content: space-between;
     width: 100%;
     height: 90px;
+
+    .header-left {
+      img {
+        cursor: pointer;
+      }
+    }
 
     .header-left,
     .header-right {
