@@ -181,7 +181,7 @@ export default function ProductDetail({ productData }) {
           </div>
         </article>
         <article className='detail-desc'>
-          <button>버튼</button>
+          <button className='active'>상세정보</button>
           <button>리뷰</button>
           <button>Q&A</button>
           <button>반품/교환정보</button>
