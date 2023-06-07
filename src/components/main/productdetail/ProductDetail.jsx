@@ -48,6 +48,12 @@ export default function ProductDetail({ productData }) {
     }
   }
 
+  const shippingFeeDisplay = (fee) => {
+    if (fee === 0) {
+      return ' 무료배송';
+    } else return ` ${fee?.toLocaleString()}원`;
+  };
+
   useEffect(() => {
     console.log(product_id);
     loadProductDetail();
@@ -126,7 +132,10 @@ export default function ProductDetail({ productData }) {
               <span>가격{productDetail.price?.toLocaleString()}</span>
             </div>
             <div className='product-buying'>
-              <span>택배배송 / 무료배송</span>
+              <span className='shipping-fee'>
+                택배배송 /{shippingFeeDisplay(productDetail.shipping_fee)}
+              </span>
+              <span className='horizon-line'></span>
               <div className='product-quantity-btns'>
                 <button
                   onClick={() => {
