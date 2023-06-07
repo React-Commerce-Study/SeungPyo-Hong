@@ -18,6 +18,14 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     position: absolute;
   }
+
+  button {
+    background: none;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
 `;
 
 const container = document.getElementById('root');
